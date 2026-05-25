@@ -40,7 +40,6 @@ portfolio-website/
 │   └── img/
 │       ├── icons/      # SVG skill/social icons
 │       ├── favicon.svg
-│       ├── favicon.png
 │       ├── apple-touch-icon.png
 │       └── og-image.jpg
 ├── config/
