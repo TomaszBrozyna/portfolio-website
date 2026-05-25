@@ -5,6 +5,13 @@
 /* ── Matrix Rain ─────────────────────────────── */
 (function () {
     const c = document.getElementById('mtx-canvas');
+
+    /* Respect prefers-reduced-motion: hide canvas and bail out */
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        c.style.display = 'none';
+        return;
+    }
+
     const ctx = c.getContext('2d');
 
     function resize() { c.width = window.innerWidth; c.height = window.innerHeight; }
@@ -122,18 +129,6 @@ const fadeObs = new IntersectionObserver(entries => {
     });
 }, { threshold: 0.12 });
 fadeEls.forEach(el => fadeObs.observe(el));
-
-/* ── Progress bars (Skills) ──────────────────── */
-const progBars = document.querySelectorAll('.prog-fill');
-const progObs  = new IntersectionObserver(entries => {
-    entries.forEach(en => {
-        if (en.isIntersecting) {
-            en.target.style.width = en.target.style.getPropertyValue('--target');
-            progObs.unobserve(en.target);
-        }
-    });
-}, { threshold: 0.5 });
-progBars.forEach(b => progObs.observe(b));
 
 /* ── Contact form (Formspree) ────────────────── */
 const form      = document.getElementById('contact-form');
