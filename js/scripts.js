@@ -49,7 +49,6 @@
         'Linux user btw',
         'Cisco CCNA in progress...',
         'Network & Cloud Enthusiast',
-        'Docker, OCI, Homelab',
         'Python & Bash Automator',
         'Cybersecurity learner',
         'git commit -m "keep going"',
