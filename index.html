@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ─── SEO ──────────────────────────────────── -->
+    <title>tomaszbrozyna@portfolio:~$</title>
+    <meta name="description" content="Portfolio Tomasza Brożyny — student informatyki KUL Lublin. Sieci komputerowe, cyberbezpieczeństwo, cloud computing, Linux." />
+    <meta name="author" content="Tomasz Brożyna" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://tomaszbrozyna.pl/" />
+
+    <!-- ─── OPEN GRAPH (social preview) ─────────── -->
+    <meta property="og:type"        content="website" />
+    <meta property="og:url"         content="https://tomaszbrozyna.pl/" />
+    <meta property="og:title"       content="Tomasz Brożyna — Portfolio" />
+    <meta property="og:description" content="Student informatyki KUL. Sieci komputerowe, cyberbezpieczeństwo, cloud computing." />
+    <meta property="og:image"       content="https://tomaszbrozyna.pl/assets/img/og-image.jpg" />
+    <meta property="og:image:width"  content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale"      content="pl_PL" />
+    <meta property="og:site_name"   content="tomaszbrozyna@portfolio" />
+
+    <!-- ─── TWITTER CARD ─────────────────────────── -->
+    <meta name="twitter:card"        content="summary_large_image" />
+    <meta name="twitter:title"       content="Tomasz Brożyna — Portfolio" />
+    <meta name="twitter:description" content="Student informatyki KUL. Sieci komputerowe, cyberbezpieczeństwo, cloud computing." />
+    <meta name="twitter:image"       content="https://tomaszbrozyna.pl/assets/img/og-image.jpg" />
+
+    <!-- ─── FAVICON ──────────────────────────────── -->
+    <link rel="icon"             type="image/svg+xml" href="assets/img/favicon.svg" />
+    <link rel="icon"             type="image/png"     href="assets/img/favicon.png" sizes="32x32" />
+    <link rel="apple-touch-icon"                      href="assets/img/apple-touch-icon.png" />
+    <meta name="theme-color" content="#ff0033" />
+
+    <!-- ─── FONTS (self-hosted, /assets/fonts/) ── -->
+    <link rel="preload" href="assets/fonts/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="assets/fonts/JetBrainsMono-Bold.woff2"    as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="assets/fonts/BebasNeue-Regular.woff2"     as="font" type="font/woff2" crossorigin />
+
+    <!-- ─── STYLES ───────────────────────────────── -->
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <!-- ─── TAILWIND CSS (CDN) ───────────────────── -->
+    <!-- Uwaga: CDN Tailwind jest odpowiedni dla środowisk dev/małych projektów.
+         Dla pełnej optymalizacji rozważ lokalny build: https://tailwindcss.com/docs/installation -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Konfiguracja Tailwinda — musi być po CDN, bo używa globalnego `tailwind` -->
+    <script src="config/tailwind.config.js"></script>
+</head>
+<body class="grid-bg">
+
+<!-- Matrix rain canvas -->
+<canvas id="mtx-canvas"></canvas>
+
+<!-- ═══════════════════ HEADER ═══════════════════ -->
+<header id="site-header">
+    <div class="header-inner">
+
+        <!-- Logo with blinking cursor animation -->
+        <a href="#home" class="logo">
+            <span><span style="color:var(--red);">tomaszbrozyna@portfolio</span><span style="color:#fff;">:</span><span style="color:var(--red);">~</span><span style="color:#fff;">$</span></span>
+            <span class="cursor"></span>
+        </a>
+
+        <!-- Desktop navigation -->
+        <nav class="desktop-nav" aria-label="Główna nawigacja">
+            <a href="#home"       class="nav-link">/home</a>
+            <a href="#about"      class="nav-link">/about</a>
+            <a href="#experience" class="nav-link">/experience</a>
+            <a href="#skills"     class="nav-link">/skills</a>
+            <a href="#projects"   class="nav-link">/projects</a>
+            <a href="#contact"    class="nav-cta">/contact</a>
+        </nav>
+
+        <!-- Hamburger (mobile) -->
+        <button class="hamburger" id="ham-btn" aria-label="Otwórz menu" aria-expanded="false" onclick="toggleMenu()">
+            <span class="ham-bar" id="hb1"></span>
+            <span class="ham-bar" id="hb2"></span>
+            <span class="ham-bar" id="hb3" style="width:14px;"></span>
+        </button>
+    </div>
+</header>
+
+<!-- Mobile menu overlay -->
+<div id="menu-overlay" onclick="closeMenu()"></div>
+
+<!-- Mobile menu -->
+<nav id="mobile-menu" aria-label="Menu mobilne">
+    <a href="#home"       class="mobile-link" onclick="closeMenu()">/home</a>
+    <a href="#about"      class="mobile-link" onclick="closeMenu()">/about</a>
+    <a href="#experience" class="mobile-link" onclick="closeMenu()">/experience</a>
+    <a href="#skills"     class="mobile-link" onclick="closeMenu()">/skills</a>
+    <a href="#projects"   class="mobile-link" onclick="closeMenu()">/projects</a>
+    <a href="#contact"    class="mobile-link" onclick="closeMenu()">/contact</a>
+</nav>
+
+<!-- ═══════════════════ MAIN ═══════════════════ -->
+<main style="padding-top:var(--hdr); position:relative; z-index:1;">
+
+    <!-- ─────────────── HERO ─────────────── -->
+    <section id="home">
+        <div class="container">
+
+            <div style="max-width: 860px; margin: 0 auto; width: 100%;">
+
+                <div style="margin-bottom:1.5rem;" class="fade-in">
+                    <div style="display:flex; align-items:center; flex-wrap:nowrap;">
+                        <span style="color:var(--red); font-size:clamp(1.4rem,4vw,2.8rem); line-height:1.15; flex-shrink:0; margin-right:0.4rem;">&gt;</span>
+                        <span id="typing-text" style="font-size:clamp(1.4rem,4vw,2.8rem); line-height:1.15; color:#fff; font-family:'JetBrains Mono',monospace; letter-spacing:0.05em;"></span>
+                        <span class="cursor" style="font-size:clamp(1.4rem,4vw,2.8rem); width:8px; margin-left:4px; flex-shrink:0;"></span>
+                    </div>
+                </div>
+
+                <p class="fade-in" style="font-size:1.1rem; line-height:1.9; color:var(--text); max-width:860px; margin-bottom:2rem; animation-delay:0.15s;">
+                    Cześć! Nazywam się <span style="color:var(--red);">Tomasz Brożyna</span> — student II roku informatyki na
+                    <span style="color:var(--red);">Katolickim Uniwersytecie Lubelskim</span> w Lublinie.
+                    Specjalizuję się w administrowaniu sieciami komputerowymi.
+                    Interesuję się cyberbezpieczeństwem, cloud computingiem i automatyzacją infrastruktury.
+                </p>
+
+                <div class="fade-in" style="display:flex; flex-wrap:wrap; gap:1rem; animation-delay:0.3s;">
+                    <a href="#projects" class="btn-hero" style="min-width:180px; text-align:center;">&gt;&gt; /projects</a>
+                    <a href="docs/cv_tomasz_brozyna.pdf" target="_blank" class="btn-hero" style="min-width:180px; text-align:center;">&gt;&gt; /download_cv</a>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ─────────────── ABOUT ─────────────── -->
+    <section id="about" style="padding:5rem 0;">
+        <div class="container">
+
+            <div style="max-width: 860px; margin: 0 auto; width: 100%;">
+
+                <div class="sec-head fade-in">
+                    <h2 class="sec-title"><span class="t-user">tomaszbrozyna@portfolio</span><span class="t-sep">:</span><span class="t-path">~</span><span class="t-sep">$</span> <span class="t-cmd">cd /about</span></h2>
+                </div>
+
+                <div class="term-win box-glow fade-in" style="width: 100%; animation-delay:0.1s;">
+                    <div class="term-bar">
+                        <div style="display:flex; gap:5px; width:54px; flex-shrink:0;">
+                            <div class="dot" style="background:#ff5f57;"></div>
+                            <div class="dot" style="background:#febc2e;"></div>
+                            <div class="dot" style="background:#28c840;"></div>
+                        </div>
+                        <span style="flex:1; text-align:center; font-size:0.7rem; color:var(--muted);">~ : bash — Konsole</span>
+                        <span style="width:54px; flex-shrink:0;"></span>
+                    </div>
+
+                    <div class="term-body" style="font-size:0.95rem;">
+                        <p><span class="p-cmd">tomaszbrozyna@portfolio</span><span style="color:#fff;">:</span><span class="p-cmd">~</span><span style="color:#fff;">$</span> <span style="color:#fff;">whoami</span></p>
+                        <br>
+                        <p style="color:var(--text);">
+                            Specjalizuję się w administrowaniu sieciami komputerowymi, budowaniu infrastruktury i cloud computingu.
+                            Swój warsztat opieram na ekosystemie <span style="color:var(--red);">Linuxa</span> (Fedora, Debian, RHEL) oraz rozwiązaniach chmurowych.
+                        </p>
+                        <br>
+                        <p style="color:var(--text);">
+                            Moim głównym polem do eksperymentów jest własny <span style="color:var(--red);">homelab</span> oraz serwery oparte na Oracle Cloud (OCI).
+                            Stawiam tam kontenery Dockera i automatyzuję zadania za pomocą <span style="color:var(--red);">Pythona</span> i Basha. Znam również programowanie obiektowe w <span style="color:var(--red);">Javie (Core)</span>.
+                        </p>
+                        <br>
+                        <p style="color:var(--text);">
+                            Ukończyłem trzy pełne moduły akademickie CCNA i aktualnie przygotowuję się do zdobycia branżowych certyfikatów:
+                            <span style="color:var(--red);">Cisco 200-301</span> oraz <span style="color:var(--red);">Red Hat RHCSA</span>.
+                        </p>
+                        <br>
+                        <p>
+                            <span class="p-cmd">tomaszbrozyna@portfolio</span><span style="color:#fff;">:</span><span class="p-cmd">~</span><span style="color:#fff;">$</span>
+                            <span class="cursor"></span>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ─────────────── EXPERIENCE ─────────────── -->
+    <section id="experience" style="padding:5rem 0;">
+        <div class="container">
+
+            <div style="max-width: 860px; margin: 0 auto; width: 100%;">
+
+                <div class="sec-head fade-in">
+                    <h2 class="sec-title"><span class="t-user">tomaszbrozyna@portfolio</span><span class="t-sep">:</span><span class="t-path">~</span><span class="t-sep">$</span> <span class="t-cmd">cd /experience</span></h2>
+                </div>
+
+                <div class="relative py-4">
+                    <div class="tl-center-line"></div>
+
+                    <div class="relative flex flex-col md:flex-row mb-14 md:mb-16 items-start md:items-center fade-in">
+                        <div class="tl-col-left w-full md:w-1/2 md:pr-12 text-right pb-4 md:pb-0 pl-9 md:pl-0">
+                            <span class="tl-tag">2024 — present</span>
+                            <p style="color:var(--red); font-size:0.9rem; letter-spacing:0.08em; margin-top:0.5rem;" class="glow-red">
+                                Katolicki Uniwersytet Lubelski
+                            </p>
+                            <p style="font-size:0.75rem; color:var(--muted); margin-top:0.25rem;">Lublin, Polska</p>
+                        </div>
+                        <div class="tl-dot-c absolute left-1/2 top-1/2 w-3 h-3 z-10 -translate-x-1/2 -translate-y-1/2 rotate-45"
+                             style="background:var(--red); border:1px solid var(--red); box-shadow:0 0 10px var(--red-glow);"></div>
+                        <div class="tl-col-right w-full md:w-1/2 md:pl-12 pl-9">
+                            <div class="term-win box-glow">
+                                <div class="term-bar">
+                                    <div style="display:flex;gap:5px;flex-shrink:0;width:48px;">
+                                        <div class="dot" style="background:#ff5f57;"></div>
+                                        <div class="dot" style="background:#febc2e;"></div>
+                                        <div class="dot" style="background:#28c840;"></div>
+                                    </div>
+                                    <span style="flex:1; text-align:center; font-size:0.7rem; color:var(--muted);">education.json</span>
+                                    <span style="width:48px;flex-shrink:0;"></span>
+                                </div>
+                                <div class="term-body" style="font-size:0.85rem; font-family: 'JetBrains Mono', Consolas, monospace; line-height: 1.7;">
+                                    <p><span style="color:#ffd700;">{</span></p>
+                                    <p class="p-out"><span style="color:#9cdcfe;">"degree"</span><span style="color:#d4d4d4;">:</span> <span style="color:#ce9178;">"Licencjat (I stopień)"</span><span style="color:#d4d4d4;">,</span></p>
+                                    <p class="p-out"><span style="color:#9cdcfe;">"major"</span><span style="color:#d4d4d4;">:</span>  <span style="color:#ce9178;">"Informatyka"</span><span style="color:#d4d4d4;">,</span></p>
+                                    <p class="p-out"><span style="color:#9cdcfe;">"spec"</span><span style="color:#d4d4d4;">:</span>   <span style="color:#ce9178;">"Administrowanie sieciami komputerowymi"</span><span style="color:#d4d4d4;">,</span></p>
+                                    <p class="p-out"><span style="color:#9cdcfe;">"status"</span><span style="color:#d4d4d4;">:</span> <span style="color:#4ec9b0;">"in_progress"</span></p>
+                                    <p><span style="color:#ffd700;">}</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative flex flex-col md:flex-row items-start md:items-center fade-in" style="animation-delay:0.1s;">
+                        <div class="tl-col-left w-full md:w-1/2 md:pr-12 pb-4 md:pb-0 pl-9 md:pl-0 order-2 md:order-1">
+                            <div class="term-win">
+                                <div class="term-bar">
+                                    <div style="display:flex;gap:5px;flex-shrink:0;width:48px;">
+                                        <div class="dot" style="background:#ff5f57;"></div>
+                                        <div class="dot" style="background:#febc2e;"></div>
+                                        <div class="dot" style="background:#28c840;"></div>
+                                    </div>
+                                    <span style="flex:1; text-align:center; font-size:0.7rem; color:var(--muted);">education.json</span>
+                                    <span style="width:48px;flex-shrink:0;"></span>
+                                </div>
+                                <div class="term-body" style="font-size:0.85rem; text-align:left; font-family: 'JetBrains Mono', Consolas, monospace; line-height: 1.7;">
+                                    <p><span style="color:#ffd700;">{</span></p>
+                                    <p class="p-out"><span style="color:#9cdcfe;">"type"</span><span style="color:#d4d4d4;">:</span>    <span style="color:#ce9178;">"Liceum Ogólnokształcące"</span><span style="color:#d4d4d4;">,</span></p>
+                                    <p class="p-out"><span style="color:#9cdcfe;">"profile"</span><span style="color:#d4d4d4;">:</span> <span style="color:#ce9178;">"Matematyczny"</span><span style="color:#d4d4d4;">,</span></p>
+                                    <p class="p-out"><span style="color:#9cdcfe;">"status"</span><span style="color:#d4d4d4;">:</span>  <span style="color:#b5cea8;">"graduated"</span></p>
+                                    <p><span style="color:#ffd700;">}</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tl-dot-c absolute left-1/2 top-1/2 w-3 h-3 z-10 -translate-x-1/2 -translate-y-1/2 rotate-45 order-1 md:order-2"
+                             style="background:var(--bg); border:1px solid var(--red); box-shadow:0 0 10px var(--red-glow);"></div>
+                        <div class="tl-col-right w-full md:w-1/2 md:pl-12 pl-9 order-1 md:order-3 mb-4 md:mb-0">
+                            <span class="tl-tag">2020 — 2024</span>
+                            <p style="color:var(--red); font-size:0.9rem; letter-spacing:0.08em; margin-top:0.5rem;">
+                                Liceum Ogólnokształcące im. Stanisława Wyspiańskiego
+                            </p>
+                            <p style="font-size:0.75rem; color:var(--muted); margin-top:0.25rem;">Rymanów, Polska</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ─────────────── SKILLS ─────────────── -->
+    <section id="skills" style="padding:5rem 0;">
+        <div class="container">
+
+            <div style="max-width: 860px; margin: 0 auto; width: 100%;">
+
+                <div class="sec-head fade-in">
+                    <h2 class="sec-title"><span class="t-user">tomaszbrozyna@portfolio</span><span class="t-sep">:</span><span class="t-path">~</span><span class="t-sep">$</span> <span class="t-cmd">cd /skills</span></h2>
+                </div>
+
+                <p class="fade-in max-w-[800px] mb-12" style="font-size:1rem; line-height:1.85; color:#fff;">
+                    Zestawienie technologii, z którymi pracuję na co dzień w ramach studiów oraz własnego chmurowego homelabu.
+                    Mój rozwój jest ukierunkowany na administrowanie infrastrukturą, automatyzację oraz cyberbezpieczeństwo.
+                </p>
+
+                <div class="flex flex-col gap-12">
+
+                    <div class="fade-in">
+                        <p class="text-[0.8rem] text-[var(--red)] tracking-widest mb-5">// networking_&_security</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+                            <div class="skill-card p-5 flex flex-col gap-2">
+                                <div class="flex items-center gap-3 mb-1">
+                                    <img src="assets/img/icons/icon-network.svg" width="20" height="20" alt="Network icon">
+                                    <span class="text-white text-[0.95rem] font-bold tracking-wide">Inżynieria Sieciowa</span>
+                                </div>
+                                <p style="font-size:0.88rem; color:#fff; line-height:1.75;">Projektowanie i konfiguracja sieci LAN/WAN (Routing, Switching, VLAN, OSPF) w oparciu o rozwiązania Cisco.</p>
+                            </div>
+
+                            <div class="skill-card p-5 flex flex-col gap-2">
+                                <div class="flex items-center gap-3 mb-1">
+                                    <img src="assets/img/icons/icon-traffic-analysis.svg" width="20" height="20" alt="Traffic analysis icon">
+                                    <span class="text-white text-[0.95rem] font-bold tracking-wide">Analiza Ruchu Sieciowego</span>
+                                </div>
+                                <p style="font-size:0.88rem; color:#fff; line-height:1.75;">Inspekcja pakietów, monitorowanie ruchu i skanowanie podatności przy użyciu narzędzi takich jak Wireshark oraz nmap.</p>
+                            </div>
+
+                            <div class="skill-card p-5 flex flex-col gap-2">
+                                <div class="flex items-center gap-3 mb-1">
+                                    <img src="assets/img/icons/icon-cybersecurity.svg" width="20" height="20" alt="Cybersecurity icon">
+                                    <span class="text-white text-[0.95rem] font-bold tracking-wide">Cyberbezpieczeństwo</span>
+                                </div>
+                                <p style="font-size:0.88rem; color:#fff; line-height:1.75;">Praktyczna znajomość technik pentestingu i rozwiązywanie maszyn (CTF) na platformach TryHackMe oraz HackTheBox.</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="fade-in">
+                        <p class="text-[0.8rem] text-[var(--red)] tracking-widest mb-5">// operating_systems_&_infrastructure</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+                            <div class="skill-card p-5 flex flex-col gap-2">
+                                <div class="flex items-center gap-3 mb-1">
+                                    <img src="assets/img/icons/icon-linux.svg" width="20" height="20" alt="Linux icon">
+                                    <span class="text-white text-[0.95rem] font-bold tracking-wide">Linux</span>
+                                </div>
+                                <p style="font-size:0.88rem; color:#fff; line-height:1.75;">Administracja systemami Fedora, Debian oraz RHEL. Automatyzacja zadań z wykorzystaniem skryptów Bash.</p>
+                            </div>
+
+                            <div class="skill-card p-5 flex flex-col gap-2">
+                                <div class="flex items-center gap-3 mb-1">
+                                    <img src="assets/img/icons/icon-windows.svg" width="18" height="18" alt="Windows icon">
+                                    <span class="text-white text-[0.95rem] font-bold tracking-wide">Windows</span>
+                                </div>
+                                <p style="font-size:0.88rem; color:#fff; line-height:1.75;">Konfiguracja Windows Server, zarządzanie środowiskiem Active Directory oraz automatyzacja w PowerShell.</p>
+                            </div>
+
+                            <div class="skill-card p-5 flex flex-col gap-2">
+                                <div class="flex items-center gap-3 mb-1">
+                                    <img src="assets/img/icons/icon-docker.svg" width="20" height="20" alt="Docker icon">
+                                    <span class="text-white text-[0.95rem] font-bold tracking-wide">Konteneryzacja i Chmura</span>
+                                </div>
+                                <p style="font-size:0.88rem; color:#fff; line-height:1.75;">Budowanie usług za pomocą Dockera i zarządzanie infrastrukturą na platformie Oracle Cloud (OCI).</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="fade-in">
+                        <p class="text-[0.8rem] text-[var(--red)] tracking-widest mb-5">// programming_languages</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+                            <div class="skill-card p-5 flex flex-col gap-2">
+                                <div class="flex items-center gap-3 mb-1">
+                                    <img src="assets/img/icons/icon-python.svg" width="18" height="18" alt="Python icon">
+                                    <span class="text-white text-[0.95rem] font-bold tracking-wide">Python</span>
+                                </div>
+                                <p style="font-size:0.88rem; color:#fff; line-height:1.75;">Pisanie skryptów automatyzujących, narzędzi sieciowych oraz tworzenie backendu we Flasku.</p>
+                            </div>
+
+                            <div class="skill-card p-5 flex flex-col gap-2">
+                                <div class="flex items-center gap-3 mb-1">
+                                    <img src="assets/img/icons/icon-java.svg" width="20" height="20" alt="Java icon">
+                                    <span class="text-white text-[0.95rem] font-bold tracking-wide">Java</span>
+                                </div>
+                                <p style="font-size:0.88rem; color:#fff; line-height:1.75;">Programowanie zorientowane obiektowo (OOP) i budowa aplikacji konsolowych w oparciu o Java Core.</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="fade-in">
+                        <p class="text-[0.8rem] text-[var(--red)] tracking-widest mb-5">// tools</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+                            <div class="skill-card p-5 flex flex-col gap-2">
+                                <div class="flex items-center gap-3 mb-1">
+                                    <img src="assets/img/icons/icon-git.svg" width="20" height="20" alt="Git icon">
+                                    <span class="text-white text-[0.95rem] font-bold tracking-wide">System kontroli wersji</span>
+                                </div>
+                                <p style="font-size:0.88rem; color:#fff; line-height:1.75;">Zarządzanie kodem źródłowym za pomocą Gita i hostowanie własnych projektów na GitHubie.</p>
+                            </div>
+
+                            <div class="skill-card p-5 flex flex-col gap-2">
+                                <div class="flex items-center gap-3 mb-1">
+                                    <img src="assets/img/icons/icon-webdev.svg" width="20" height="20" alt="Web development icon">
+                                    <span class="text-white text-[0.95rem] font-bold tracking-wide">Web development</span>
+                                </div>
+                                <p style="font-size:0.88rem; color:#fff; line-height:1.75;">Budowanie struktur i semantyki stron oraz minimalistyczne stylowanie za pomocą Tailwind CSS.</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="fade-in">
+                        <p class="text-[0.8rem] text-[var(--red)] tracking-widest mb-5">// certs_&_badges</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+                            <div class="border border-[var(--border)] bg-[var(--red-faint)] p-6 transition-colors hover:border-[rgba(255,0,51,0.35)]">
+                                <span class="text-[0.75rem] text-[var(--green)] tracking-widest uppercase mb-4 block">● Zdobyte Odznaki</span>
+                                <ul class="text-[0.9rem] text-white space-y-3 list-none">
+                                    <li><span class="text-[var(--red)] mr-2 font-bold">&gt;</span> CCNA: Introduction to Networks</li>
+                                    <li><span class="text-[var(--red)] mr-2 font-bold">&gt;</span> CCNA: Switching, Routing, and Wireless Essentials</li>
+                                    <li><span class="text-[var(--red)] mr-2 font-bold">&gt;</span> CCNA: Enterprise Networking, Security, and Automation</li>
+                                    <li><span class="text-[var(--red)] mr-2 font-bold">&gt;</span> RHCSA: System Administration 1</li>
+                                    <li><span class="text-[var(--red)] mr-2 font-bold">&gt;</span> Python Essentials 1</li>
+                                </ul>
+                            </div>
+
+                            <div class="border border-dashed border-[var(--border)] bg-[var(--red-faint)] p-6 opacity-80 transition-colors hover:border-[rgba(255,0,51,0.35)]">
+                                <span class="text-[0.75rem] text-[var(--muted)] tracking-widest uppercase mb-4 block">○ W trakcie przygotowań</span>
+                                <ul class="text-[0.9rem] text-white space-y-3 list-none">
+                                    <li><span class="text-[var(--muted)] mr-2 font-bold">&gt;</span> Cisco CCNA 200-301</li>
+                                    <li><span class="text-[var(--muted)] mr-2 font-bold">&gt;</span> Red Hat RHCSA (Egzamin Praktyczny)</li>
+                                    <li><span class="text-[var(--muted)] mr-2 font-bold">&gt;</span> Python Institute PCAP</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ─────────────── PROJECTS ─────────────── -->
+    <section id="projects" style="padding:5rem 0;">
+        <div class="container">
+
+            <div style="max-width: 860px; margin: 0 auto; width: 100%;">
+
+                <div class="sec-head fade-in">
+                    <h2 class="sec-title"><span class="t-user">tomaszbrozyna@portfolio</span><span class="t-sep">:</span><span class="t-path">~</span><span class="t-sep">$</span> <span class="t-cmd">cd /projects</span></h2>
+                </div>
+
+                <p class="fade-in max-w-[800px] mb-10" style="font-size:1rem; line-height:1.85; color:#fff;">
+                    Kilka projektów, które aktualnie buduję lub planuję — od infrastruktury chmurowej po narzędzia dla administratorów sieci.
+                    Każdy repo jest publiczny na GitHubie i traktuję je jako dokumentację własnego rozwoju.
+                </p>
+
+                <div style="display:flex; flex-direction:column; gap:0.75rem;">
+
+                    <!-- 1 — completed -->
+                    <div class="road-item fade-in" style="animation-delay:0.05s;">
+                        <div style="display:flex; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; gap:0.75rem; margin-bottom:0.75rem;">
+                            <div>
+                                <p class="road-status s-done">● COMPLETED</p>
+                                <h3 class="road-title">Personal Website</h3>
+                            </div>
+                            <div style="display:flex; flex-wrap:wrap; gap:0.4rem;">
+                                <span class="skill-chip">HTML</span>
+                                <span class="skill-chip">CSS</span>
+                                <span class="skill-chip">Tailwind</span>
+                                <span class="skill-chip">JavaScript</span>
+                            </div>
+                        </div>
+                        <p class="road-desc">
+                            Osobiste portfolio w stylistyce terminala / Matrixa. Responsywna strona z animacjami, sekcjami skills, projektów i formularzem kontaktowym.
+                        </p>
+                        <p style="font-size:0.72rem; color:var(--red); margin-top:0.75rem;">→ github.com/tomaszbrozyna/portfolio</p>
+                    </div>
+
+                    <!-- 2 — in progress -->
+                    <div class="road-item fade-in" style="animation-delay:0.1s; opacity:0.88;">
+                        <div style="display:flex; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; gap:0.75rem; margin-bottom:0.75rem;">
+                            <div>
+                                <p class="road-status s-wip">◐ IN PROGRESS</p>
+                                <h3 class="road-title">Homelab / OCI Projects</h3>
+                            </div>
+                            <div style="display:flex; flex-wrap:wrap; gap:0.4rem;">
+                                <span class="skill-chip">Linux</span>
+                                <span class="skill-chip">OCI</span>
+                                <span class="skill-chip">Debian</span>
+                                <span class="skill-chip">Docker</span>
+                            </div>
+                        </div>
+                        <p class="road-desc">
+                            Własny homelab sieciowy lub serwer na Oracle Cloud Infrastructure (free tier). Hosting portfolio, projekty serwerowe, eksperymenty z Debianem i Dockerem. Wszystkie projekty publikowane na GitHubie.
+                        </p>
+                        <p style="font-size:0.72rem; color:var(--red); margin-top:0.75rem;">→ github.com/tomaszbrozyna</p>
+                    </div>
+
+                    <!-- 3 — planned -->
+                    <div class="road-item fade-in" style="animation-delay:0.15s; opacity:0.65;">
+                        <div style="display:flex; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; gap:0.75rem; margin-bottom:0.75rem;">
+                            <div>
+                                <p class="road-status s-planned">○ PLANNED</p>
+                                <h3 class="road-title">IPv4/IPv6 Subnet Calculator</h3>
+                            </div>
+                            <div style="display:flex; flex-wrap:wrap; gap:0.4rem;">
+                                <span class="skill-chip">Java</span>
+                                <span class="skill-chip">CLI</span>
+                            </div>
+                        </div>
+                        <p class="road-desc">
+                            Kalkulator podsieci IPv4 i IPv6 działający w CLI. Obliczenia adresów sieci, broadcastu, zakresu hostów. Narzędzie dla administratorów sieci.
+                        </p>
+                        <p style="font-size:0.72rem; color:var(--muted); margin-top:0.75rem;">&gt; repo coming soon...</p>
+                    </div>
+
+                    <!-- 4 — planned -->
+                    <div class="road-item fade-in" style="animation-delay:0.2s; opacity:0.65;">
+                        <div style="display:flex; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; gap:0.75rem; margin-bottom:0.75rem;">
+                            <div>
+                                <p class="road-status s-planned">○ PLANNED</p>
+                                <h3 class="road-title">Password Manager + Generator</h3>
+                            </div>
+                            <div style="display:flex; flex-wrap:wrap; gap:0.4rem;">
+                                <span class="skill-chip">Python</span>
+                                <span class="skill-chip">Flask</span>
+                                <span class="skill-chip">REST API</span>
+                            </div>
+                        </div>
+                        <p class="road-desc">
+                            Menedżer haseł z generatorem i REST API. Bezpieczne przechowywanie, szyfrowanie lokalne, dostęp przez przeglądarkę. Backend Flask, frontend minimalistyczny.
+                        </p>
+                        <p style="font-size:0.72rem; color:var(--muted); margin-top:0.75rem;">&gt; repo coming soon...</p>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ─────────────── CONTACT ─────────────── -->
+    <section id="contact" style="display:grid; place-content:center; padding:5rem 0;">
+        <div class="container">
+
+            <div style="max-width: 860px; margin: 0 auto; width: 100%;">
+
+                <div class="sec-head fade-in">
+                    <h2 class="sec-title"><span class="t-user">tomaszbrozyna@portfolio</span><span class="t-sep">:</span><span class="t-path">~</span><span class="t-sep">$</span> <span class="t-cmd">cd /contact</span></h2>
+                </div>
+
+                <div style="display:grid; grid-template-columns:1fr; gap:3rem; align-items:center;" class="md-two-col">
+
+                    <!-- Lewa — treść i linki z index.html -->
+                    <div class="fade-in">
+                        <h3 style="font-family:'Bebas Neue',cursive; font-size:1.7rem; letter-spacing:0.18em; color:#fff; margin-bottom:1rem;">NAWIĄŻMY KONTAKT</h3>
+                        <p style="font-size:0.92rem; color:#fff; line-height:1.9; margin-bottom:2rem;">
+                            Jestem otwarty na ciekawe projekty, staże, pytania o sieci lub cyberbezpieczeństwo.
+                            Możesz się ze mną skontaktować przez formularz lub bezpośrednio przez social media.
+                        </p>
+
+                        <div style="display:flex; flex-direction:column; gap:0.75rem;">
+                            <a href="https://github.com/tomaszbrozyna" target="_blank" rel="noopener noreferrer" class="social-link">
+            <span class="social-ico">
+              <img src="assets/img/icons/icon-github.svg" width="18" height="18" alt="GitHub">
+            </span>
+                                <div>
+                                    <div class="social-label">GITHUB</div>
+                                    <div class="social-val">github.com/tomaszbrozyna</div>
+                                </div>
+                                <span class="social-arr">→</span>
+                            </a>
+
+                            <a href="https://linkedin.com/in/tomaszbrozyna" target="_blank" rel="noopener noreferrer" class="social-link">
+            <span class="social-ico">
+              <img src="assets/img/icons/icon-linkedin.svg" width="18" height="18" alt="LinkedIn">
+            </span>
+                                <div>
+                                    <div class="social-label">LINKEDIN</div>
+                                    <div class="social-val">linkedin.com/in/tomaszbrozyna</div>
+                                </div>
+                                <span class="social-arr">→</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Prawa — formularz w okienku terminala -->
+                    <div class="term-win fade-in" style="animation-delay:0.15s;">
+                        <div class="term-bar">
+                            <div class="dot" style="background:#ff5f57;"></div>
+                            <div class="dot" style="background:#febc2e;"></div>
+                            <div class="dot" style="background:#28c840;"></div>
+                            <span style="margin-left:0.5rem; font-size:0.7rem; color:var(--muted);">send_message.sh</span>
+                        </div>
+                        <div style="padding:1.4rem;">
+                            <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+                                <div style="display:flex; flex-direction:column; gap:1.1rem;">
+                                    <div>
+                                        <label class="f-label" for="c-name">$ NAME:</label>
+                                        <input type="text" id="c-name" name="name" placeholder="Jan Kowalski" required class="f-input" />
+                                    </div>
+                                    <div>
+                                        <label class="f-label" for="c-email">$ EMAIL:</label>
+                                        <input type="email" id="c-email" name="email" placeholder="jan@example.com" required class="f-input" />
+                                    </div>
+                                    <div>
+                                        <label class="f-label" for="c-subject">$ SUBJECT:</label>
+                                        <input type="text" id="c-subject" name="subject" placeholder="Temat wiadomości" class="f-input" />
+                                    </div>
+                                    <div>
+                                        <label class="f-label" for="c-message">$ MESSAGE:</label>
+                                        <textarea id="c-message" name="message" rows="4" placeholder="Twoja wiadomość..." required class="f-input" style="resize:none;"></textarea>
+                                    </div>
+                                    <button type="submit" class="btn-hero" id="submit-btn">&gt;&gt; SEND_MESSAGE</button>
+                                </div>
+                            </form>
+                            <div id="form-ok" style="display:none; margin-top:1rem; padding:0.75rem; border:1px solid rgba(0,255,65,0.25); background:rgba(0,255,65,0.04);">
+                                <p style="font-size:0.78rem; color:var(--green);">✓ Wiadomość wysłana pomyślnie!</p>
+                            </div>
+                            <div id="form-err" style="display:none; margin-top:1rem; padding:0.75rem; border:1px solid rgba(255,0,51,0.25); background:rgba(255,0,51,0.04);">
+                                <p style="font-size:0.78rem; color:var(--red);">✗ Błąd wysyłania. Spróbuj ponownie.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<footer style="padding:4rem 0 0; background:linear-gradient(to bottom, var(--bg), #0a0003);">
+    <div class="container">
+        <div style="display:grid; grid-template-columns:1fr; gap:2.5rem; margin-bottom:3rem;" class="md-three-col">
+
+            <!-- Marka -->
+            <div>
+                <div style="display:flex; align-items:center; gap:4px; margin-bottom:1rem;">
+                    <span><span style="color:var(--red); font-size:0.82rem; letter-spacing:0.05em;">tomaszbrozyna@portfolio</span><span style="color:#fff; font-size:0.82rem;">:</span><span style="color:var(--red); font-size:0.82rem;">~</span><span style="color:#fff; font-size:0.82rem;">$</span></span>
+                    <span class="cursor"></span>
+                </div>
+                <div style="font-size:0.78rem; color:var(--muted); line-height:2.1;">
+                    <p><span style="color:var(--red);">&gt;</span> Student informatyki, KUL Lublin</p>
+                    <p><span style="color:var(--red);">&gt;</span> Przyszły spec od sieci i cybersec</p>
+                    <p><span style="color:var(--red);">&gt;</span> Linux user na co dzień</p>
+                </div>
+            </div>
+
+            <!-- Quick links -->
+            <div>
+                <p style="font-size:0.68rem; color:var(--red); letter-spacing:0.2em; margin-bottom:1rem;">// quick_links</p>
+                <div style="display:flex; flex-direction:column; gap:0.5rem;">
+                    <a href="#home"       class="nav-link">/home</a>
+                    <a href="#about"      class="nav-link">/about</a>
+                    <a href="#experience" class="nav-link">/experience</a>
+                    <a href="#skills"     class="nav-link">/skills</a>
+                    <a href="#projects"   class="nav-link">/projects</a>
+                    <a href="#contact"    class="nav-link">/contact</a>
+                </div>
+            </div>
+
+            <!-- Kontakt -->
+            <div>
+                <p style="font-size:0.68rem; color:var(--red); letter-spacing:0.2em; margin-bottom:1rem;">// contact_info</p>
+                <div style="font-size:0.78rem; color:var(--muted); line-height:2.1; display:flex; flex-direction:column; gap:0.2rem;">
+                    <p>📍 Lublin, Polska</p>
+                    <p>🎓 KUL — Informatyka</p>
+                    <a href="https://github.com/tomaszbrozyna" target="_blank" rel="noopener noreferrer" class="nav-link" style="display:block;">🔗 github.com/tomaszbrozyna</a>
+                    <a href="https://linkedin.com/in/tomaszbrozyna" target="_blank" rel="noopener noreferrer" class="nav-link" style="display:block;">🔗 linkedin.com/in/tomaszbrozyna</a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Copyright bar -->
+        <div style="border-top:1px solid var(--border); padding:1.2rem 0; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:0.75rem;">
+            <p style="font-size:0.68rem; color:var(--muted);">
+                <span style="color:var(--red);">©</span> <span id="footer-year"></span> Tomasz Brożyna. Wszelkie prawa zastrzeżone.
+            </p>
+            <p style="font-size:0.68rem; color:var(--muted);">
+                Built with:
+                <span style="color:var(--red);">HTML</span> ·
+                <span style="color:var(--red);">CSS</span> ·
+                <span style="color:var(--red);">Tailwind CSS</span> ·
+                <span style="color:var(--red);">Vanilla JS</span>
+            </p>
+        </div>
+    </div>
+</footer>
+
+
+<!-- ─── SCRIPTS ──────────────────────────────── -->
+<script src="js/scripts.js" defer></script>
+
+</body>
+</html>
