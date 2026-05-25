@@ -100,6 +100,9 @@ function toggleMenu() {
 
 function closeMenu() { if (menuOpen) toggleMenu(); }
 
+/* Close on Escape key */
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+
 /* ── Smooth scroll ───────────────────────────── */
 document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
